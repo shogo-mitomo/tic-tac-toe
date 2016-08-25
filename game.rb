@@ -14,8 +14,8 @@ class Game
   end
 
   def win?
-    lines = [board.rows, board.cols, board.cross]
-    lines.any? { |line| line.any? { |array| same?(array) } }
+    lines = [board.rows, board.cols, board.crosses]
+    lines.flatten(1).any? { |array| same?(array) }
   end
 
   private

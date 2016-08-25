@@ -7,8 +7,8 @@ class Board
   end
 
   def to_s
-    filled = faces.map { |array| array.map { |face| face || ' ' } }
-    filled.map { |face| face.join('|') }.join("\n")
+    filled = faces.flatten.map { |face| face || ' ' }
+    filled.each_slice(size).map { |face| face.join('|') }.join("\n")
   end
 
   def filled?
@@ -23,11 +23,11 @@ class Board
     faces.transpose
   end
 
-  def cross
+  def crosses
     indices = (0...size).to_a
-    combis  = indices.zip(indices)
 
-    [combis.map { |combi| faces.dig(*combi) },
-     combis.map { |combi| faces.reverse.dig(*combi) }]
+    [faces, faces.reverse].map do |faces|
+      indices.map { |i| faces.dig(i, i) }
+    end
   end
 end

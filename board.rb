@@ -11,33 +11,23 @@ class Board
     filled.map { |face| face.join('|') }.join("\n")
   end
 
-  def over?
-    win? || !faces.flatten.include?(nil)
+  def filled?
+    !faces.flatten.include?(nil)
   end
 
-  private
-
-  def win?
-    same_rows? || same_cols? || same_cross?
+  def rows
+    faces
   end
 
-  def same?(array)
-    array.uniq.one? && !array.include?(nil)
+  def cols
+    faces.transpose
   end
 
-  def same_rows?
-    faces.any? { |row| same?(row) }
-  end
-
-  def same_cols?
-    faces.transpose.any? { |col| same?(col) }
-  end
-
-  def same_cross?
+  def cross
     indices = (0...size).to_a
-    combi   = indices.zip(indices)
-    crosses = [combi.map { |a| faces.dig(*a) },
-               combi.map { |a| faces.reverse.dig(*a) }]
-    crosses.any? { |cross| same?(cross) }
+    combis  = indices.zip(indices)
+
+    [combis.map { |combi| faces.dig(*combi) },
+     combis.map { |combi| faces.reverse.dig(*combi) }]
   end
 end

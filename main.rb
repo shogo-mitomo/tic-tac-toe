@@ -23,7 +23,7 @@ CHARS.cycle do |char|
 
   game.move(mark)
 
-  break if board.over?
+  break if game.over?
 end
 
 puts '===   GAME OVER   ==='

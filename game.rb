@@ -8,4 +8,19 @@ class Game
   def move(mark)
     board.faces[mark.row][mark.col] = mark.char
   end
+
+  def over?
+    win? || board.filled?
+  end
+
+  def win?
+    lines = [board.rows, board.cols, board.cross]
+    lines.any? { |line| line.any? { |array| same?(array) } }
+  end
+
+  private
+
+  def same?(array)
+    array.uniq.one? && !array.include?(nil)
+  end
 end

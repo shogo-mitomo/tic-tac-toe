@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './game.rb'
 require './board.rb'
 require './mark.rb'

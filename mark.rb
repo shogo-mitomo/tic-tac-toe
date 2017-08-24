@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Mark
   attr_accessor :char, :row, :col
 

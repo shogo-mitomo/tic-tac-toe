@@ -5,7 +5,7 @@ require './board.rb'
 require './mark.rb'
 
 BOARD_SIZE = 3
-CHARS      = %w(o x)
+CHARS      = %w[o x].freeze
 
 board = Board.new(BOARD_SIZE)
 game  = Game.new(board)

@@ -23,7 +23,7 @@ CHARS.cycle do |char|
   print "Enter #{char}'s col position [0-#{BOARD_SIZE.pred}] > "
   mark.col = gets.chomp.to_i
 
-  game.move(mark)
+  game.progress(mark)
 
   break if game.over?
 end

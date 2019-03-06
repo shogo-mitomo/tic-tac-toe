@@ -7,7 +7,7 @@ class Game
     @board = board
   end
 
-  def move(mark)
+  def progress(mark)
     board.faces[mark.row][mark.col] = mark.char
   end
 

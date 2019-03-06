@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require './game.rb'
-require './board.rb'
-require './mark.rb'
+require './lib/game.rb'
+require './lib/board.rb'
+require './lib/mark.rb'
 
 BOARD_SIZE = 3
 CHARS      = %w[o x].freeze
